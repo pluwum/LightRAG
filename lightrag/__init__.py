@@ -2,6 +2,7 @@ from .lightrag import (
     LightRAG as LightRAG,
     QueryParam as QueryParam,
     DatabaseParam as DatabaseParam,
+    GraphParam as GraphParam,
 )
 
 __version__ = "1.3.7"

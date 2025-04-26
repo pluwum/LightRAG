@@ -45,6 +45,7 @@ from .base import (
     DocStatusStorage,
     QueryParam,
     DatabaseParam,
+    GraphParam,
     StorageNameSpace,
     StoragesStatus,
 )
@@ -251,6 +252,12 @@ class LightRAG:
 
     db_params: DatabaseParam = field(default_factory=DatabaseParam)
     """Database connection parameters. Used by database storage backends."""
+    
+    # Graph Configuration
+    # ---
+
+    graph_params: GraphParam = field(default_factory=GraphParam) 
+    """Graph database parameters. Used by graph storage backends."""
 
     # Extensions
     # ---

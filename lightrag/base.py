@@ -135,6 +135,16 @@ class DatabaseParam:
 
 
 @dataclass
+class GraphParam:
+    """Configuration parameters for graph database in LightRAG."""
+
+    graph_name: str = field(
+        default_factory=lambda: os.environ.get("GRAPH_NAME", "lightrag")
+    )
+    """Graph name for the knowledge graph. Defaults to 'lightrag' if not specified."""
+
+
+@dataclass
 class StorageNameSpace(ABC):
     namespace: str
     global_config: dict[str, Any]

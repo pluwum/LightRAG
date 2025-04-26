@@ -24,6 +24,7 @@ from ..base import (
     DocProcessingStatus,
     DocStatus,
     DocStatusStorage,
+    GraphParam,
 )
 from ..namespace import NameSpace, is_namespace
 from ..utils import logger
@@ -1137,7 +1138,8 @@ class PGGraphQueryException(Exception):
 @dataclass
 class PGGraphStorage(BaseGraphStorage):
     def __post_init__(self):
-        self.graph_name = self.namespace or os.environ.get("AGE_GRAPH_NAME", "lightrag")
+        self.graph_params = GraphParam(**self.global_config["graph_params"])
+        self.graph_name = self.graph_params.graph_name or self.namespace or os.environ.get("AGE_GRAPH_NAME", "lightrag")
         self.db: PostgreSQLDB | None = None
 
     @staticmethod
